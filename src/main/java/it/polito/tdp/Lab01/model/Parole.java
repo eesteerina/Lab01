@@ -8,7 +8,8 @@ public class Parole {
 	private List<String> listaParole;
 		
 	public Parole() {
-		listaParole = new LinkedList<String>();
+		//listaParole = new LinkedList<String>();
+		listaParole = new ArrayList<String>();
 	}
 	
 	public void addParola(String p) {

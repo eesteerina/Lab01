@@ -47,10 +47,11 @@ public class FXMLController {
     	elenco.addParola(txtParola.getText());
     	
     	for(String s : elenco.getElenco()) {
-    		if(s != elenco.getElenco().get(0)) {
-    			this.txtResult.appendText("\n");
-    		}
-    		this.txtResult.appendText(s);
+    		//if(s.compareTo(elenco.getElenco().get(0)) != 0) { 
+    			//this.txtResult.appendText("\n");
+    		//}
+    		
+    		this.txtResult.appendText(s + "\n");
     	}
     	this.txtParola.clear();
     	this.txtAreaTempi.setText("Tempo di esecuzione: " + System.nanoTime());
@@ -73,10 +74,10 @@ public class FXMLController {
     	this.txtResult.clear();
     	
     	for(String s : elenco.getElenco()) {
-    		if(s != elenco.getElenco().get(0)) {
-    			this.txtResult.appendText("\n");
-    		}
-    		this.txtResult.appendText(s);
+    		//if(s != elenco.getElenco().get(0)) {
+    			//this.txtResult.appendText("\n");
+    		//}
+    		this.txtResult.appendText(s + "\n");
     	}
     	this.txtAreaTempi.setText("Tempo di esecuzione: " + System.nanoTime());
     	
