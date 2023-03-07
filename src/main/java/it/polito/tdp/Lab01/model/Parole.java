@@ -6,10 +6,9 @@ import java.util.*;
 public class Parole {
 	
 	private List<String> listaParole;
-	private TreeMap<String, String> mappaParole;
 		
 	public Parole() {
-		 listaParole = new LinkedList<String>();
+		listaParole = new LinkedList<String>();
 	}
 	
 	public void addParola(String p) {
@@ -17,18 +16,16 @@ public class Parole {
 	}
 	
 	public List<String> getElenco() {
-		mappaParole = new TreeMap<String, String>();
-		
-		for(String s : listaParole) {
-			mappaParole.put(s, s);
-		}
-		LinkedList<String> ritorno = new LinkedList(mappaParole.values());
-		
-		return ritorno;
+		Collections.sort(listaParole);
+		return listaParole;
 	}
 	
 	public void reset() {
 		listaParole.clear();
+	}
+	
+	public void cancella(String daEliminare) {
+		listaParole.remove(daEliminare);
 	}
 
 }

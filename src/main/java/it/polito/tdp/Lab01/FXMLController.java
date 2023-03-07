@@ -13,6 +13,7 @@ import javafx.scene.control.TextField;
 public class FXMLController {
 	
 	Parole elenco ;
+	private String parolaDaEliminare;
 
     @FXML
     private ResourceBundle resources;
@@ -22,6 +23,9 @@ public class FXMLController {
 
     @FXML
     private Button btnInserisci;
+    
+    @FXML
+    private Button btnCancella;
 
     @FXML
     private Button btnReset;
@@ -31,14 +35,51 @@ public class FXMLController {
 
     @FXML
     private TextArea txtResult;
+    
+    @FXML
+    private TextArea txtAreaTempi;
 
     @FXML
     void doInsert(ActionEvent event) {
+    	
+    	this.txtResult.clear();
+    	
+    	elenco.addParola(txtParola.getText());
+    	
+    	for(String s : elenco.getElenco()) {
+    		if(s != elenco.getElenco().get(0)) {
+    			this.txtResult.appendText("\n");
+    		}
+    		this.txtResult.appendText(s);
+    	}
+    	this.txtParola.clear();
+    	this.txtAreaTempi.setText("Tempo di esecuzione: " + System.nanoTime());
 
     }
 
     @FXML
     void doReset(ActionEvent event) {
+    	elenco.reset();
+    	this.txtResult.clear();
+    	this.txtAreaTempi.setText("Tempo di esecuzione: " + System.nanoTime());
+
+    }
+    
+    @FXML
+    void doCancella(ActionEvent event) {
+    	
+    	parolaDaEliminare = this.txtResult.getSelectedText();
+    	elenco.cancella(parolaDaEliminare);
+    	this.txtResult.clear();
+    	
+    	for(String s : elenco.getElenco()) {
+    		if(s != elenco.getElenco().get(0)) {
+    			this.txtResult.appendText("\n");
+    		}
+    		this.txtResult.appendText(s);
+    	}
+    	this.txtAreaTempi.setText("Tempo di esecuzione: " + System.nanoTime());
+    	
 
     }
 
