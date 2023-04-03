@@ -44,19 +44,20 @@ public class FXMLController {
     	
     	this.txtResult.clear();
     	
-    	elenco.addParola(txtParola.getText());
-    	String ss = elenco.getElenco().get(0);
-    	
-    	for(String s : elenco.getElenco()) {
-    		if(s.compareTo(ss) != 0) { 
-    			this.txtResult.appendText("\n");
-    		}
-    		
-    		this.txtResult.appendText(s);
+    	if(!this.txtParola.getText().isEmpty()) {
+	    	elenco.addParola(txtParola.getText());
+	    	
+	    	for(String s : elenco.getElenco()) {
+	    		
+	    		this.txtResult.appendText(s);
+	    		this.txtResult.appendText("\n");
+	    	}
+	    	this.txtParola.clear();
+	    	this.txtAreaTempi.setText("Tempo di esecuzione: " + System.nanoTime());
     	}
-    	this.txtParola.clear();
-    	this.txtAreaTempi.setText("Tempo di esecuzione: " + System.nanoTime());
-
+    	else {
+    		this.txtResult.setText("Inserire parola");
+    	}
     }
 
     @FXML
